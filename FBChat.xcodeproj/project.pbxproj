@@ -9,21 +9,21 @@
 /* Begin PBXBuildFile section */
 		91434CD41EDE070900D3D9D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91434CD31EDE070900D3D9D6 /* AppDelegate.swift */; };
 		91434CD61EDE070900D3D9D6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91434CD51EDE070900D3D9D6 /* ViewController.swift */; };
-		91434CD91EDE070900D3D9D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91434CD71EDE070900D3D9D6 /* Main.storyboard */; };
 		91434CDC1EDE070900D3D9D6 /* FBChat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 91434CDA1EDE070900D3D9D6 /* FBChat.xcdatamodeld */; };
 		91434CDE1EDE070900D3D9D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91434CDD1EDE070900D3D9D6 /* Assets.xcassets */; };
 		91434CE11EDE070900D3D9D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91434CDF1EDE070900D3D9D6 /* LaunchScreen.storyboard */; };
+		91D15EE61EF864CC0068FFAA /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 91D15EE51EF864CC0068FFAA /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		91434CD01EDE070900D3D9D6 /* FBChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FBChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91434CD31EDE070900D3D9D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91434CD51EDE070900D3D9D6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		91434CD81EDE070900D3D9D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		91434CDB1EDE070900D3D9D6 /* FBChat.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FBChat.xcdatamodel; sourceTree = "<group>"; };
 		91434CDD1EDE070900D3D9D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		91434CE01EDE070900D3D9D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		91434CE21EDE070900D3D9D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		91D15EE51EF864CC0068FFAA /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,11 +58,11 @@
 			children = (
 				91434CD31EDE070900D3D9D6 /* AppDelegate.swift */,
 				91434CD51EDE070900D3D9D6 /* ViewController.swift */,
-				91434CD71EDE070900D3D9D6 /* Main.storyboard */,
 				91434CDD1EDE070900D3D9D6 /* Assets.xcassets */,
 				91434CDF1EDE070900D3D9D6 /* LaunchScreen.storyboard */,
 				91434CE21EDE070900D3D9D6 /* Info.plist */,
 				91434CDA1EDE070900D3D9D6 /* FBChat.xcdatamodeld */,
+				91D15EE51EF864CC0068FFAA /* .gitignore */,
 			);
 			path = FBChat;
 			sourceTree = "<group>";
@@ -127,8 +127,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				91434CE11EDE070900D3D9D6 /* LaunchScreen.storyboard in Resources */,
+				91D15EE61EF864CC0068FFAA /* .gitignore in Resources */,
 				91434CDE1EDE070900D3D9D6 /* Assets.xcassets in Resources */,
-				91434CD91EDE070900D3D9D6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,14 +148,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		91434CD71EDE070900D3D9D6 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				91434CD81EDE070900D3D9D6 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		91434CDF1EDE070900D3D9D6 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -305,6 +297,7 @@
 				91434CE71EDE070900D3D9D6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
