@@ -12,6 +12,7 @@
 		91434CDC1EDE070900D3D9D6 /* FBChat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 91434CDA1EDE070900D3D9D6 /* FBChat.xcdatamodeld */; };
 		91434CDE1EDE070900D3D9D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91434CDD1EDE070900D3D9D6 /* Assets.xcassets */; };
 		91434CE11EDE070900D3D9D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91434CDF1EDE070900D3D9D6 /* LaunchScreen.storyboard */; };
+		917B485A1F04478100583F57 /* FriendsControllerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917B48591F04478100583F57 /* FriendsControllerHelper.swift */; };
 		91D15EE61EF864CC0068FFAA /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 91D15EE51EF864CC0068FFAA /* .gitignore */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +24,7 @@
 		91434CDD1EDE070900D3D9D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		91434CE01EDE070900D3D9D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		91434CE21EDE070900D3D9D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		917B48591F04478100583F57 /* FriendsControllerHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsControllerHelper.swift; sourceTree = "<group>"; };
 		91D15EE51EF864CC0068FFAA /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -57,6 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				91434CD31EDE070900D3D9D6 /* AppDelegate.swift */,
+				917B48591F04478100583F57 /* FriendsControllerHelper.swift */,
 				91434CD51EDE070900D3D9D6 /* ViewController.swift */,
 				91434CDD1EDE070900D3D9D6 /* Assets.xcassets */,
 				91434CDF1EDE070900D3D9D6 /* LaunchScreen.storyboard */,
@@ -142,6 +145,7 @@
 				91434CDC1EDE070900D3D9D6 /* FBChat.xcdatamodeld in Sources */,
 				91434CD61EDE070900D3D9D6 /* ViewController.swift in Sources */,
 				91434CD41EDE070900D3D9D6 /* AppDelegate.swift in Sources */,
+				917B485A1F04478100583F57 /* FriendsControllerHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
