@@ -8,17 +8,17 @@
 
 import UIKit
 
-class Friend: NSObject {
-    var name: String?
-    var profileImageName: String?
-}
-
-class Message: NSObject {
-    var text: String?
-    var date: NSDate?
-    
-    var friend: Friend?
-}
+//class Friend: NSObject {
+//    var name: String?
+//    var profileImageName: String?
+//}
+//
+//class Message: NSObject {
+//    var text: String?
+//    var date: NSDate?
+//    
+//    var friend: Friend?
+//}
 
 extension FriendsController {
     
@@ -41,7 +41,7 @@ extension FriendsController {
         messageTracer.text = "Cheers love! The Cavalry's here!"
         messageTracer.date = NSDate()
         
-        messages = [message]
+        messages = [message, messageTracer]
     }
     
 }
