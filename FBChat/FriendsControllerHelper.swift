@@ -17,11 +17,15 @@ extension FriendsController {
         if let context = delegate?.persistentContainer.viewContext {
             
             do {
-                let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Message")
-                let messages = try(context.fetch(fetchRequest) as? [Message])
+                let entityNames = ["Friend", "Message"]
                 
-                for message in messages! {
-                    context.delete(message)
+                for entityName in entityNames {
+                    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+                    let objects = try(context.fetch(fetchRequest)) as? [NSManagedObject]
+                    
+                    for object in objects! {
+                        context.delete(object)
+                    }
                 }
                 
                 try(context.save())
