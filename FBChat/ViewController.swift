@@ -45,7 +45,10 @@ class FriendsController: UICollectionViewController, UICollectionViewDelegateFlo
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        <#code#>
+        let layout = UICollectionViewFlowLayout()
+        let chatLogController = ChatLogController(collectionViewLayout: layout)
+        chatLogController.friend = messages?[indexPath.item].friend
+        navigationController?.pushViewController(chatLogController, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
