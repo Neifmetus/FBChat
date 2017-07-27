@@ -75,12 +75,12 @@
 				91434CD31EDE070900D3D9D6 /* AppDelegate.swift */,
 				917B48591F04478100583F57 /* FriendsControllerHelper.swift */,
 				91434CD51EDE070900D3D9D6 /* ViewController.swift */,
+				737D23C91F28EAEB002A71DE /* ChatLogController.swift */,
 				91434CDD1EDE070900D3D9D6 /* Assets.xcassets */,
 				91434CDF1EDE070900D3D9D6 /* LaunchScreen.storyboard */,
 				91434CE21EDE070900D3D9D6 /* Info.plist */,
 				91434CDA1EDE070900D3D9D6 /* FBChat.xcdatamodeld */,
 				91D15EE51EF864CC0068FFAA /* .gitignore */,
-				737D23C91F28EAEB002A71DE /* ChatLogController.swift */,
 			);
 			path = FBChat;
 			sourceTree = "<group>";
