@@ -58,6 +58,13 @@ class FriendsController: UICollectionViewController, UICollectionViewDelegateFlo
 
 class MessageCell: BaseCell {
     
+    override var isHighlighted: Bool {
+        didSet {
+            backgroundColor = isHighlighted ? UIColor.blue : UIColor.white
+        }
+    }
+    
+    
     var message: Message? {
         didSet {
             nameLabel.text = message?.friend?.name

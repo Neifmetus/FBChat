@@ -12,6 +12,7 @@
 		737D23C71F1D0C0D002A71DE /* Friend+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D23C31F1D0C0D002A71DE /* Friend+CoreDataClass.swift */; };
 		737D23C81F1D0C0D002A71DE /* Friend+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D23C41F1D0C0D002A71DE /* Friend+CoreDataProperties.swift */; };
 		737D23CA1F28EAEB002A71DE /* ChatLogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D23C91F28EAEB002A71DE /* ChatLogController.swift */; };
+		7391A63E1F3AE8330029D20E /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7391A63D1F3AE8330029D20E /* CustomTabBarController.swift */; };
 		91434CD41EDE070900D3D9D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91434CD31EDE070900D3D9D6 /* AppDelegate.swift */; };
 		91434CD61EDE070900D3D9D6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91434CD51EDE070900D3D9D6 /* ViewController.swift */; };
 		91434CDC1EDE070900D3D9D6 /* FBChat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 91434CDA1EDE070900D3D9D6 /* FBChat.xcdatamodeld */; };
@@ -27,6 +28,7 @@
 		737D23C31F1D0C0D002A71DE /* Friend+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Friend+CoreDataClass.swift"; sourceTree = "<group>"; };
 		737D23C41F1D0C0D002A71DE /* Friend+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Friend+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		737D23C91F28EAEB002A71DE /* ChatLogController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatLogController.swift; sourceTree = "<group>"; };
+		7391A63D1F3AE8330029D20E /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		91434CD01EDE070900D3D9D6 /* FBChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FBChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91434CD31EDE070900D3D9D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91434CD51EDE070900D3D9D6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				917B48591F04478100583F57 /* FriendsControllerHelper.swift */,
 				91434CD51EDE070900D3D9D6 /* ViewController.swift */,
 				737D23C91F28EAEB002A71DE /* ChatLogController.swift */,
+				7391A63D1F3AE8330029D20E /* CustomTabBarController.swift */,
 				91434CDD1EDE070900D3D9D6 /* Assets.xcassets */,
 				91434CDF1EDE070900D3D9D6 /* LaunchScreen.storyboard */,
 				91434CE21EDE070900D3D9D6 /* Info.plist */,
@@ -159,6 +162,7 @@
 			files = (
 				737D23CA1F28EAEB002A71DE /* ChatLogController.swift in Sources */,
 				91434CDC1EDE070900D3D9D6 /* FBChat.xcdatamodeld in Sources */,
+				7391A63E1F3AE8330029D20E /* CustomTabBarController.swift in Sources */,
 				91434CD61EDE070900D3D9D6 /* ViewController.swift in Sources */,
 				737D23C61F1D0C0D002A71DE /* Message+CoreDataProperties.swift in Sources */,
 				91434CD41EDE070900D3D9D6 /* AppDelegate.swift in Sources */,
