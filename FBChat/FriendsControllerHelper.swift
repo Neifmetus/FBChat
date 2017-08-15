@@ -71,6 +71,20 @@ extension FriendsController {
             
             createMessageWith(text: "Death walks among you.", friend: reaper, minutesAgo: 5, context: context)
             
+            let mercy = NSEntityDescription.insertNewObject(forEntityName: "Friend", into:
+                context) as! Friend
+            mercy.name = "Mercy"
+            mercy.profileImageName = "mercyImg"
+            
+            createMessageWith(text: "A moment to enjoy some peace and quiet, probably just a moment though.", friend: mercy, minutesAgo: 60 * 24, context: context)
+            
+            let mccree = NSEntityDescription.insertNewObject(forEntityName: "Friend", into:
+                context) as! Friend
+            mccree.name = "Mccree"
+            mccree.profileImageName = "mccreeImg"
+            
+            createMessageWith(text: "Well, it's high noon somewhere in the world.", friend: mccree, minutesAgo: 60 * 24 * 10, context: context)
+            
             do {
                 try(context.save())
             } catch let err {
