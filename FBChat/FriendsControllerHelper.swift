@@ -61,8 +61,8 @@ extension FriendsController {
             tracer.profileImageName = "tracerImg"
             
             createMessageWith(text: "Cheers love!", friend: tracer, minutesAgo: 3, context: context)
-            createMessageWith(text: "The Cavalry's here!", friend: tracer, minutesAgo: 2, context: context)
-            createMessageWith(text: "My ultimate is charging.", friend: tracer, minutesAgo: 1, context: context)
+            createMessageWith(text: "The Cavalry's here! What did I get?! What did I get?!", friend: tracer, minutesAgo: 2, context: context)
+            createMessageWith(text: "My ultimate is charging. Let's try that again. Ever get that feeling of déjà vu? Ugh! Someone help me move this thing! They've got a teleporter, we've got to find it.", friend: tracer, minutesAgo: 1, context: context)
             
             let reaper = NSEntityDescription.insertNewObject(forEntityName: "Friend", into:
                 context) as! Friend
