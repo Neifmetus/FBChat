@@ -55,14 +55,7 @@ extension FriendsController {
             message.text = "No one can hide from my side. I almost feel something!"
             message.date = NSDate()
             
-            let tracer = NSEntityDescription.insertNewObject(forEntityName: "Friend", into:
-                context) as! Friend
-            tracer.name = "Tracer"
-            tracer.profileImageName = "tracerImg"
-            
-            createMessageWith(text: "Cheers love!", friend: tracer, minutesAgo: 3, context: context)
-            createMessageWith(text: "The Cavalry's here! What did I get?! What did I get?!", friend: tracer, minutesAgo: 2, context: context)
-            createMessageWith(text: "My ultimate is charging. Let's try that again. Ever get that feeling of déjà vu? Ugh! Someone help me move this thing! They've got a teleporter, we've got to find it.", friend: tracer, minutesAgo: 1, context: context)
+            createTraceMessagesWith(context: context)
             
             let reaper = NSEntityDescription.insertNewObject(forEntityName: "Friend", into:
                 context) as! Friend
@@ -95,6 +88,20 @@ extension FriendsController {
         loadData()
     }
     
+    private func createTraceMessagesWith(context: NSManagedObjectContext) {
+        let tracer = NSEntityDescription.insertNewObject(forEntityName: "Friend", into:
+            context) as! Friend
+        tracer.name = "Tracer"
+        tracer.profileImageName = "tracerImg"
+        
+        createMessageWith(text: "Cheers love!", friend: tracer, minutesAgo: 3, context: context)
+        createMessageWith(text: "The Cavalry's here! What did I get?! What did I get?!", friend: tracer, minutesAgo: 2, context: context)
+        createMessageWith(text: "My ultimate is charging. Let's try that again. Ever get that feeling of déjà vu? Ugh! Someone help me move this thing! They've got a teleporter, we've got to find it.", friend: tracer, minutesAgo: 1, context: context)
+        
+        // response message 
+        createMessageWith(text: "Sometimes I feel a little sick after using my Translocator, I'm sure you know what I mean, Tracer.", friend: tracer, minutesAgo: 1, context: context, isSender: true)
+    }
+    
     func loadData() {
         let delegate = UIApplication.shared.delegate as? AppDelegate
         
@@ -125,12 +132,14 @@ extension FriendsController {
         }
     }
     
-    private func createMessageWith(text: String, friend: Friend, minutesAgo: Double, context: NSManagedObjectContext) {
+    private func createMessageWith(text: String, friend: Friend, minutesAgo: Double, context: NSManagedObjectContext,
+                                   isSender: Bool = false) {
         let message = NSEntityDescription.insertNewObject(forEntityName: "Message", into:
             context) as! Message
         message.friend = friend
         message.text = text
         message.date = NSDate().addingTimeInterval(-minutesAgo * 60)
+        message.isSender = isSender
     }
     
     private func fetchFriends() -> [Friend]? {
