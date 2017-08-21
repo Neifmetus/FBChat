@@ -60,7 +60,6 @@ class ChatLogController: UICollectionViewController, UICollectionViewDelegateFlo
                     
                     cell.textBubbleView.frame = CGRect(x: 48 - 10, y: -4, width: estimatedFrame.width + 16 + 8 + 16, height: estimatedFrame.height + 30 + 6)
                     
-                    //cell.textBubbleView.backgroundColor = UIColor(white: 0.95, alpha: 1)
                     cell.bubbleImageView.image = ChatLogMessageCell.incomingBubble
                     cell.bubbleImageView.tintColor = UIColor(white: 0.95, alpha: 1)
                     cell.messageTextView.textColor = UIColor.black
@@ -68,14 +67,13 @@ class ChatLogController: UICollectionViewController, UICollectionViewDelegateFlo
                     cell.profileImageView.isHidden = false
 
                 } else {
-                    cell.messageTextView.frame = CGRect(x: view.frame.width - (estimatedFrame.width + 16) - 16, y: 0, width: estimatedFrame.width + 16, height: estimatedFrame.height + 20)
+                    cell.messageTextView.frame = CGRect(x: view.frame.width - (estimatedFrame.width + 16) - 16 - 4, y: 0, width: estimatedFrame.width + 16, height: estimatedFrame.height + 20)
                     
-                    cell.textBubbleView.frame = CGRect(x: view.frame.width - (estimatedFrame.width + 16 + 8) - 16, y: 0, width: estimatedFrame.width + 16 + 8, height: estimatedFrame.height + 30)
+                    cell.textBubbleView.frame = CGRect(x: view.frame.width - (estimatedFrame.width + 16 + 8) - 16 - 10, y: -4, width: estimatedFrame.width + 16 + 8 + 10, height: estimatedFrame.height + 30 + 6)
                     
                     cell.bubbleImageView.image = ChatLogMessageCell.outgoingBubble
                     cell.bubbleImageView.tintColor = UIColor(red: 0, green: 134/255, blue: 249/255, alpha: 1)
                     cell.messageTextView.textColor = UIColor.white
-                    //cell.textBubbleView.backgroundColor = UIColor(red: 0, green: 134/255, blue: 249/255, alpha: 1)
                     
                     cell.profileImageView.isHidden = true
                 }

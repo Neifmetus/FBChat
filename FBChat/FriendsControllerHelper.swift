@@ -100,6 +100,10 @@ extension FriendsController {
         
         // response message 
         createMessageWith(text: "Sometimes I feel a little sick after using my Translocator, I'm sure you know what I mean, Tracer.", friend: tracer, minutesAgo: 1, context: context, isSender: true)
+
+        createMessageWith(text: "Won't be a problem if you just disappeared forever. Don't think I don't recognize that device of yours. I know you stole it!", friend: tracer, minutesAgo: 1, context: context)
+        
+        createMessageWith(text: "What can I say? A girl just has to have the latest tech.", friend: tracer, minutesAgo: 1, context: context, isSender: true)
     }
     
     func loadData() {
