@@ -24,12 +24,94 @@ class ChatLogController: UICollectionViewController, UICollectionViewDelegateFlo
     
     var messages: [Message]?
     
+    let messageInputContainerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.white
+        
+        return view
+    }()
+    
+    let inputTextField: UITextField = {
+       let textField = UITextField()
+       textField.placeholder = "Enter message..."
+        
+       return textField
+    }()
+    
+    let sendButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Send", for: .normal)
+        let titleColor = UIColor(red: 0, green: 137/255, blue: 249/255, alpha: 1)
+        button.setTitleColor(titleColor, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        
+        return button
+    }()
+    
+    var bottomConstraint: NSLayoutConstraint?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tabBarController?.tabBar.isHidden = true
         
         collectionView?.backgroundColor = UIColor.white
         
         collectionView?.register(ChatLogMessageCell.self, forCellWithReuseIdentifier: cellId)
+        
+        view.addSubview(messageInputContainerView)
+        view.addConstraintsWith(format: "H:|[v0]|", views: messageInputContainerView)
+        view.addConstraintsWith(format: "V:[v0(48)]", views: messageInputContainerView)
+        
+        bottomConstraint = NSLayoutConstraint(item: messageInputContainerView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
+        view.addConstraint(bottomConstraint!)
+        
+        setupInputComponents()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: .UIKeyboardWillShow, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: .UIKeyboardWillHide, object: nil)
+    }
+    
+    @objc private func handleKeyboardNotification(notification: NSNotification) {
+        if let userInfo = notification.userInfo {
+            let keyboardFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+            print(keyboardFrame)
+            
+            let isShowing = notification.name == .UIKeyboardWillShow
+            
+            bottomConstraint?.constant = isShowing ? -keyboardFrame.height : 0
+            
+            UIView.animate(withDuration: 0, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: { 
+                self.view.layoutIfNeeded()
+            }, completion: { (completed) in
+                if isShowing {
+                    let indexPath = IndexPath(row: (self.messages?.count)! - 1, section: 0)
+                    self.collectionView?.scrollToItem(at: indexPath, at: .bottom, animated: true)
+                }
+            })
+        }
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        inputTextField.endEditing(true)
+    }
+    
+    private func setupInputComponents() {
+        let topBorderVuew = UIView()
+        topBorderVuew.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
+        
+        messageInputContainerView.addSubview(inputTextField)
+        messageInputContainerView.addSubview(sendButton)
+        messageInputContainerView.addSubview(topBorderVuew)
+        
+        messageInputContainerView.addConstraintsWith(format: "H:|-8-[v0][v1(60)]|", views: inputTextField, sendButton)
+        messageInputContainerView.addConstraintsWith(format: "V:|[v0]|", views: inputTextField)
+        
+        messageInputContainerView.addConstraintsWith(format: "V:|[v0]|", views: sendButton)
+        
+        messageInputContainerView.addConstraintsWith(format: "H:|[v0]|", views: topBorderVuew)
+        messageInputContainerView.addConstraintsWith(format: "V:|[v0(0.5)]", views: topBorderVuew)
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

@@ -13,6 +13,11 @@ class FriendsController: UICollectionViewController, UICollectionViewDelegateFlo
     var messages: [Message]?
     
     private let cellId = "cellId"
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = false
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
