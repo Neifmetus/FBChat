@@ -44,14 +44,40 @@ class ChatLogController: UICollectionViewController, UICollectionViewDelegateFlo
         let titleColor = UIColor(red: 0, green: 137/255, blue: 249/255, alpha: 1)
         button.setTitleColor(titleColor, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        button.addTarget(self, action: #selector(handleSend), for: .touchUpInside)
         
         return button
     }()
+    
+    @objc private func handleSend() {
+        let delegate = UIApplication.shared.delegate as? AppDelegate
+        let context = delegate?.persistentContainer.viewContext
+        
+        let message = FriendsController.createMessageWith(text: inputTextField.text!, friend: friend!, minutesAgo: 0, context: context!, isSender: true)
+        
+        do {
+            try context?.save()
+            
+            messages?.append(message)
+            
+            let item = (messages?.count)! - 1
+            let insertionPath = IndexPath(item: item, section: 0)
+            collectionView?.insertItems(at: [insertionPath])
+            collectionView?.scrollToItem(at: insertionPath, at: .bottom, animated: true)
+            
+            inputTextField.text = nil
+            
+        } catch let err {
+            print(err)
+        }
+    }
     
     var bottomConstraint: NSLayoutConstraint?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Simulate", style: .plain, target: self, action: #selector(simulate))
         
         tabBarController?.tabBar.isHidden = true
         
@@ -71,6 +97,29 @@ class ChatLogController: UICollectionViewController, UICollectionViewDelegateFlo
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: .UIKeyboardWillShow, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: .UIKeyboardWillHide, object: nil)
+    }
+    
+    @objc private func simulate() {
+        let delegate = UIApplication.shared.delegate as? AppDelegate
+        let context = delegate?.persistentContainer.viewContext
+        
+        let message = FriendsController.createMessageWith(text: "We’ve gotta stop the payload.", friend: friend!, minutesAgo: 1, context: context!)
+        
+        do {
+            try context?.save()
+            
+            messages?.append(message)
+            
+            messages = messages?.sorted(by: {$0.date!.compare($1.date! as Date) == .orderedAscending} )
+            
+            if let item = messages?.index(of: message) {
+                let receivingIndexPath = IndexPath(item: item, section: 0)
+                collectionView?.insertItems(at: [receivingIndexPath])
+            }
+            
+        } catch let err {
+            print(err)
+        }
     }
     
     @objc private func handleKeyboardNotification(notification: NSNotification) {

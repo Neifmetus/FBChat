@@ -62,21 +62,21 @@ extension FriendsController {
             reaper.name = "Reaper"
             reaper.profileImageName = "reaperImg"
             
-            createMessageWith(text: "Death walks among you.", friend: reaper, minutesAgo: 5, context: context)
+            FriendsController.createMessageWith(text: "Death walks among you.", friend: reaper, minutesAgo: 5, context: context)
             
             let mercy = NSEntityDescription.insertNewObject(forEntityName: "Friend", into:
                 context) as! Friend
             mercy.name = "Mercy"
             mercy.profileImageName = "mercyImg"
             
-            createMessageWith(text: "A moment to enjoy some peace and quiet, probably just a moment though.", friend: mercy, minutesAgo: 60 * 24, context: context)
+            FriendsController.createMessageWith(text: "A moment to enjoy some peace and quiet, probably just a moment though.", friend: mercy, minutesAgo: 60 * 24, context: context)
             
             let mccree = NSEntityDescription.insertNewObject(forEntityName: "Friend", into:
                 context) as! Friend
             mccree.name = "Mccree"
             mccree.profileImageName = "mccreeImg"
             
-            createMessageWith(text: "Well, it's high noon somewhere in the world.", friend: mccree, minutesAgo: 60 * 24 * 10, context: context)
+            FriendsController.createMessageWith(text: "Well, it's high noon somewhere in the world.", friend: mccree, minutesAgo: 60 * 24 * 10, context: context)
             
             do {
                 try(context.save())
@@ -94,16 +94,16 @@ extension FriendsController {
         tracer.name = "Tracer"
         tracer.profileImageName = "tracerImg"
         
-        createMessageWith(text: "Cheers love!", friend: tracer, minutesAgo: 3, context: context)
-        createMessageWith(text: "The Cavalry's here! What did I get?! What did I get?!", friend: tracer, minutesAgo: 2, context: context)
-        createMessageWith(text: "My ultimate is charging. Let's try that again. Ever get that feeling of déjà vu? Ugh! Someone help me move this thing! They've got a teleporter, we've got to find it.", friend: tracer, minutesAgo: 1, context: context)
+        FriendsController.createMessageWith(text: "Cheers love!", friend: tracer, minutesAgo: 3, context: context)
+        FriendsController.createMessageWith(text: "The Cavalry's here! What did I get?! What did I get?!", friend: tracer, minutesAgo: 2, context: context)
+        FriendsController.createMessageWith(text: "My ultimate is charging. Let's try that again. Ever get that feeling of déjà vu? Ugh! Someone help me move this thing! They've got a teleporter, we've got to find it.", friend: tracer, minutesAgo: 1, context: context)
         
         // response message 
-        createMessageWith(text: "Sometimes I feel a little sick after using my Translocator, I'm sure you know what I mean, Tracer.", friend: tracer, minutesAgo: 1, context: context, isSender: true)
+        FriendsController.createMessageWith(text: "Sometimes I feel a little sick after using my Translocator, I'm sure you know what I mean, Tracer.", friend: tracer, minutesAgo: 1, context: context, isSender: true)
 
-        createMessageWith(text: "Won't be a problem if you just disappeared forever. Don't think I don't recognize that device of yours. I know you stole it!", friend: tracer, minutesAgo: 1, context: context)
+        FriendsController.createMessageWith(text: "Won't be a problem if you just disappeared forever. Don't think I don't recognize that device of yours. I know you stole it!", friend: tracer, minutesAgo: 1, context: context)
         
-        createMessageWith(text: "What can I say? A girl just has to have the latest tech.", friend: tracer, minutesAgo: 1, context: context, isSender: true)
+        FriendsController.createMessageWith(text: "What can I say? A girl just has to have the latest tech.", friend: tracer, minutesAgo: 1, context: context, isSender: true)
     }
     
     func loadData() {
@@ -136,14 +136,16 @@ extension FriendsController {
         }
     }
     
-    private func createMessageWith(text: String, friend: Friend, minutesAgo: Double, context: NSManagedObjectContext,
-                                   isSender: Bool = false) {
+    static func createMessageWith(text: String, friend: Friend, minutesAgo: Double, context: NSManagedObjectContext,
+                                   isSender: Bool = false) -> Message {
         let message = NSEntityDescription.insertNewObject(forEntityName: "Message", into:
             context) as! Message
         message.friend = friend
         message.text = text
         message.date = NSDate().addingTimeInterval(-minutesAgo * 60)
         message.isSender = isSender
+        
+        return message
     }
     
     private func fetchFriends() -> [Friend]? {
