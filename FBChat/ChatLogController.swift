@@ -44,9 +44,29 @@ class ChatLogController: UICollectionViewController, UICollectionViewDelegateFlo
         let titleColor = UIColor(red: 0, green: 137/255, blue: 249/255, alpha: 1)
         button.setTitleColor(titleColor, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        button.addTarget(self, action: #selector(handleSend), for: .touchUpInside)
         
         return button
     }()
+    
+    func handleSend() {
+        let delegate = UIApplication.shared.delegate as? AppDelegate
+        let context = delegate?.persistentContainer.viewContext
+        
+        let message = FriendsController.createMessageWith(text: inputTextField.text!, friend: friend!, minutesAgo: 0, context: context!, isSender: true)
+        do {
+            try context?.save()
+            messages?.append(message)
+            
+            let item = messages!.count - 1
+            let insertionIndexPath = IndexPath(item: item, section: 0)
+            collectionView?.insertItems(at: [insertionIndexPath])
+            
+            inputTextField.text = ""
+        } catch let err {
+            print(err)
+        }
+    }
     
     var bottomConstraint: NSLayoutConstraint?
     
@@ -76,7 +96,6 @@ class ChatLogController: UICollectionViewController, UICollectionViewDelegateFlo
     @objc private func handleKeyboardNotification(notification: NSNotification) {
         if let userInfo = notification.userInfo {
             let keyboardFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-            print(keyboardFrame)
             
             let isShowing = notification.name == .UIKeyboardWillShow
             
