@@ -49,13 +49,15 @@ class ChatLogController: UICollectionViewController, UICollectionViewDelegateFlo
         return button
     }()
     
-    func handleSend() {
+    @objc private func handleSend() {
         let delegate = UIApplication.shared.delegate as? AppDelegate
         let context = delegate?.persistentContainer.viewContext
         
         let message = FriendsController.createMessageWith(text: inputTextField.text!, friend: friend!, minutesAgo: 0, context: context!, isSender: true)
+        
         do {
             try context?.save()
+            
             messages?.append(message)
             
             let item = messages!.count - 1
