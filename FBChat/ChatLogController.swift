@@ -73,6 +73,8 @@ class ChatLogController: UICollectionViewController, UICollectionViewDelegateFlo
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Simulate", style: .plain, target: self, action: #selector(simulate))
+        
         tabBarController?.tabBar.isHidden = true
         
         collectionView?.backgroundColor = UIColor.white
@@ -91,6 +93,29 @@ class ChatLogController: UICollectionViewController, UICollectionViewDelegateFlo
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: .UIKeyboardWillShow, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: .UIKeyboardWillHide, object: nil)
+    }
+    
+    @objc private func simulate() {
+        let delegate = UIApplication.shared.delegate as? AppDelegate
+        let context = delegate?.persistentContainer.viewContext
+        
+        let message = FriendsController.createMessageWith(text: "We’ve gotta stop the payload.", friend: friend!, minutesAgo: 1, context: context!)
+        
+        do {
+            try context?.save()
+            
+            messages?.append(message)
+            
+            messages = messages?.sorted(by: {$0.date!.compare($1.date! as Date) == .orderedAscending} )
+            
+            if let item = messages?.index(of: message) {
+                let receivingIndexPath = IndexPath(item: item, section: 0)
+                collectionView?.insertItems(at: [receivingIndexPath])
+            }
+            
+        } catch let err {
+            print(err)
+        }
     }
     
     @objc private func handleKeyboardNotification(notification: NSNotification) {
