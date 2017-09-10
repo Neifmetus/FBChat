@@ -9,7 +9,7 @@
 import UIKit
 import MultipeerConnectivity
 
-class MPCManager: NSObject, MCSessionDelegate {
+class MPCHandler: NSObject, MCSessionDelegate {
 
     var session: MCSession!
     
@@ -32,7 +32,7 @@ class MPCManager: NSObject, MCSessionDelegate {
         browser = MCBrowserViewController(serviceType: "my-chat", session: session)
     }
     
-    func advertiseSelf(advertise: Bool) {
+    func advertiseSelf(_ advertise: Bool) {
         if advertise {
             advertiser = MCAdvertiserAssistant(serviceType: "my-chat", discoveryInfo: nil, session: session)
             advertiser.start()
@@ -43,11 +43,15 @@ class MPCManager: NSObject, MCSessionDelegate {
     }
     
     func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
-        let userInfo = ["peerID": peerID, "state": state.rawValue] as [String : Any]
+        let userInfo = ["peerID": peerID, "state": state.rawValue] as [String: Any]
+        DispatchQueue.main.async(execute: { () -> Void in NotificationCenter.default.post(name: NSNotification.Name(rawValue: "MPC_DidChangeStateNotification"), object: nil, userInfo: userInfo)
+        })
     }
     
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
-        
+        let userInfo = ["date": data, "peerID": peerID] as [String: Any]
+        DispatchQueue.main.async(execute: { () -> Void in NotificationCenter.default.post(name: NSNotification.Name(rawValue: "MPC_DidReceiveDataNotification"), object: nil, userInfo: userInfo)
+        })
     }
     
     func session(_ session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, with progress: Progress) {
