@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import MultipeerConnectivity
 
-class FriendsController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class FriendsController: UICollectionViewController, UICollectionViewDelegateFlowLayout, MCBrowserViewControllerDelegate {
     
     var messages: [Message]?
+    
+    var appDelegate: AppDelegate!
     
     private let cellId = "cellId"
     
@@ -21,8 +24,13 @@ class FriendsController: UICollectionViewController, UICollectionViewDelegateFlo
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.mpcHandler.setupPeerWith(displayName: UIDevice.current.name)
+        appDelegate.mpcHandler.setupSession()
+        appDelegate.mpcHandler.advertiseSelf(true)
         
         navigationItem.title = "Recent"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Connect", style: .plain, target: self, action: #selector(connetWithPeer))
         
         collectionView?.backgroundColor = UIColor.white
         collectionView?.alwaysBounceVertical = true
@@ -30,6 +38,25 @@ class FriendsController: UICollectionViewController, UICollectionViewDelegateFlo
         collectionView?.register(MessageCell.self, forCellWithReuseIdentifier: cellId)
         
         setupData()
+        
+    }
+    
+    @objc private func connetWithPeer(sender: AnyObject) {
+        
+        if appDelegate.mpcHandler.session != nil {
+            appDelegate.mpcHandler.setupBrowser()
+            appDelegate.mpcHandler.browser.delegate = self
+            
+            self.present(appDelegate.mpcHandler.browser, animated: true, completion: nil)
+        }
+    }
+    
+    func browserViewControllerDidFinish(_ browserViewController: MCBrowserViewController) {
+        appDelegate.mpcHandler.browser.dismiss(animated: true, completion: nil)
+    }
+    
+    func browserViewControllerWasCancelled(_ browserViewController: MCBrowserViewController) {
+        appDelegate.mpcHandler.browser.dismiss(animated: true, completion: nil)
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

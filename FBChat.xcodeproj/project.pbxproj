@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C0B279D1F5DDCF30071BC82 /* MPCHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0B279C1F5DDCF30071BC82 /* MPCHandler.swift */; };
 		737D23C51F1D0C0D002A71DE /* Message+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D23C11F1D0C0D002A71DE /* Message+CoreDataClass.swift */; };
 		737D23C61F1D0C0D002A71DE /* Message+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D23C21F1D0C0D002A71DE /* Message+CoreDataProperties.swift */; };
 		737D23C71F1D0C0D002A71DE /* Friend+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D23C31F1D0C0D002A71DE /* Friend+CoreDataClass.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C0B279C1F5DDCF30071BC82 /* MPCHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPCHandler.swift; sourceTree = "<group>"; };
 		737D23C11F1D0C0D002A71DE /* Message+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Message+CoreDataClass.swift"; sourceTree = "<group>"; };
 		737D23C21F1D0C0D002A71DE /* Message+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Message+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		737D23C31F1D0C0D002A71DE /* Friend+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Friend+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -51,6 +53,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C0B279B1F5BFE090071BC82 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				737D23C11F1D0C0D002A71DE /* Message+CoreDataClass.swift */,
+				737D23C21F1D0C0D002A71DE /* Message+CoreDataProperties.swift */,
+				737D23C31F1D0C0D002A71DE /* Friend+CoreDataClass.swift */,
+				737D23C41F1D0C0D002A71DE /* Friend+CoreDataProperties.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		91434CC71EDE070900D3D9D6 = {
 			isa = PBXGroup;
 			children = (
@@ -70,15 +83,13 @@
 		91434CD21EDE070900D3D9D6 /* FBChat */ = {
 			isa = PBXGroup;
 			children = (
-				737D23C11F1D0C0D002A71DE /* Message+CoreDataClass.swift */,
-				737D23C21F1D0C0D002A71DE /* Message+CoreDataProperties.swift */,
-				737D23C31F1D0C0D002A71DE /* Friend+CoreDataClass.swift */,
-				737D23C41F1D0C0D002A71DE /* Friend+CoreDataProperties.swift */,
+				0C0B279B1F5BFE090071BC82 /* Model */,
 				91434CD31EDE070900D3D9D6 /* AppDelegate.swift */,
 				917B48591F04478100583F57 /* FriendsControllerHelper.swift */,
 				91434CD51EDE070900D3D9D6 /* ViewController.swift */,
 				737D23C91F28EAEB002A71DE /* ChatLogController.swift */,
 				7391A63D1F3AE8330029D20E /* CustomTabBarController.swift */,
+				0C0B279C1F5DDCF30071BC82 /* MPCHandler.swift */,
 				91434CDD1EDE070900D3D9D6 /* Assets.xcassets */,
 				91434CDF1EDE070900D3D9D6 /* LaunchScreen.storyboard */,
 				91434CE21EDE070900D3D9D6 /* Info.plist */,
@@ -120,6 +131,7 @@
 				TargetAttributes = {
 					91434CCF1EDE070900D3D9D6 = {
 						CreatedOnToolsVersion = 8.3.1;
+						DevelopmentTeam = 9486727C5W;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -161,6 +173,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				737D23CA1F28EAEB002A71DE /* ChatLogController.swift in Sources */,
+				0C0B279D1F5DDCF30071BC82 /* MPCHandler.swift in Sources */,
 				91434CDC1EDE070900D3D9D6 /* FBChat.xcdatamodeld in Sources */,
 				7391A63E1F3AE8330029D20E /* CustomTabBarController.swift in Sources */,
 				91434CD61EDE070900D3D9D6 /* ViewController.swift in Sources */,
@@ -286,6 +299,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9486727C5W;
 				INFOPLIST_FILE = FBChat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Home.FBChat;
@@ -298,6 +312,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9486727C5W;
 				INFOPLIST_FILE = FBChat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Home.FBChat;
