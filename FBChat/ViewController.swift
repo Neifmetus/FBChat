@@ -29,6 +29,10 @@ class FriendsController: UICollectionViewController, UICollectionViewDelegateFlo
         appDelegate.mpcHandler.setupSession()
         appDelegate.mpcHandler.advertiseSelf(true)
         
+        NotificationCenter.default.addObserver(self, selector: "peerChangedStateWithNotification:", name: NSNotification.Name(rawValue: "MPC_DidChangeStateNotification"), object: nil)
+
+        NotificationCenter.default.addObserver(self, selector: "handleReceivedDataWithNotification:", name: NSNotification.Name(rawValue: "MPC_DidReceiveDataNotification"), object: nil)
+        
         navigationItem.title = "Recent"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Connect", style: .plain, target: self, action: #selector(connetWithPeer))
         
@@ -49,6 +53,10 @@ class FriendsController: UICollectionViewController, UICollectionViewDelegateFlo
             
             self.present(appDelegate.mpcHandler.browser, animated: true, completion: nil)
         }
+    }
+    
+    func peerChangedStateWithNotification(notification: NSNotification) {
+        
     }
     
     func browserViewControllerDidFinish(_ browserViewController: MCBrowserViewController) {

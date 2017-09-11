@@ -43,17 +43,17 @@ extension FriendsController {
         let delegate = UIApplication.shared.delegate as? AppDelegate
         
         if let context = delegate?.persistentContainer.viewContext {
+//            
+//            let widow = NSEntityDescription.insertNewObject(forEntityName: "Friend", into:
+//                context) as! Friend
+//            widow.name = "Widowmaker"
+//            widow.profileImageName = "widowmaker"
             
-            let widow = NSEntityDescription.insertNewObject(forEntityName: "Friend", into:
-                context) as! Friend
-            widow.name = "Widowmaker"
-            widow.profileImageName = "widowmaker"
-            
-            let message = NSEntityDescription.insertNewObject(forEntityName: "Message", into:
-                context) as! Message
-            message.friend = widow
-            message.text = "No one can hide from my side. I almost feel something!"
-            message.date = NSDate()
+//            let message = NSEntityDescription.insertNewObject(forEntityName: "Message", into:
+//                context) as! Message
+//            message.friend = widow
+//            message.text = "No one can hide from my side. I almost feel something!"
+//            message.date = NSDate()
             
             createTraceMessagesWith(context: context)
             
