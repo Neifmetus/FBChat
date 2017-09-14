@@ -60,13 +60,11 @@ class ChatLogController: UICollectionViewController, UICollectionViewDelegateFlo
             
             messages?.append(message)
             
-            let item = (messages?.count)! - 1
-            let insertionPath = IndexPath(item: item, section: 0)
-            collectionView?.insertItems(at: [insertionPath])
-            collectionView?.scrollToItem(at: insertionPath, at: .bottom, animated: true)
+            let item = messages!.count - 1
+            let insertionIndexPath = IndexPath(item: item, section: 0)
+            collectionView?.insertItems(at: [insertionIndexPath])
             
-            inputTextField.text = nil
-            
+            inputTextField.text = ""
         } catch let err {
             print(err)
         }
@@ -125,7 +123,6 @@ class ChatLogController: UICollectionViewController, UICollectionViewDelegateFlo
     @objc private func handleKeyboardNotification(notification: NSNotification) {
         if let userInfo = notification.userInfo {
             let keyboardFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-            print(keyboardFrame)
             
             let isShowing = notification.name == .UIKeyboardWillShow
             

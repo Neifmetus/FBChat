@@ -43,6 +43,11 @@ extension FriendsController {
         let delegate = UIApplication.shared.delegate as? AppDelegate
         
         if let context = delegate?.persistentContainer.viewContext {
+//            
+//            let widow = NSEntityDescription.insertNewObject(forEntityName: "Friend", into:
+//                context) as! Friend
+//            widow.name = "Widowmaker"
+//            widow.profileImageName = "widowmaker"
             
 //            let widow = NSEntityDescription.insertNewObject(forEntityName: "Friend", into:
 //                context) as! Friend
@@ -137,7 +142,7 @@ extension FriendsController {
     }
     
     static func createMessageWith(text: String, friend: Friend, minutesAgo: Double, context: NSManagedObjectContext,
-                                   isSender: Bool = false) -> Message {
+                                   isSender: Bool = false) -> Message{
         let message = NSEntityDescription.insertNewObject(forEntityName: "Message", into:
             context) as! Message
         message.friend = friend

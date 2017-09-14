@@ -56,6 +56,10 @@ class FriendsController: UICollectionViewController, UICollectionViewDelegateFlo
         }
     }
     
+    func peerChangedStateWithNotification(notification: NSNotification) {
+        
+    }
+    
     func browserViewControllerDidFinish(_ browserViewController: MCBrowserViewController) {
         appDelegate.mpcHandler.browser.dismiss(animated: true, completion: nil)
     }
