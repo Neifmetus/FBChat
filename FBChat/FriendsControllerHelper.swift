@@ -49,11 +49,6 @@ extension FriendsController {
 //            widow.name = "Widowmaker"
 //            widow.profileImageName = "widowmaker"
             
-//            let widow = NSEntityDescription.insertNewObject(forEntityName: "Friend", into:
-//                context) as! Friend
-//            widow.name = "Widowmaker"
-//            widow.profileImageName = "widowmaker"
-            
 //            let message = NSEntityDescription.insertNewObject(forEntityName: "Message", into:
 //                context) as! Message
 //            message.friend = widow
