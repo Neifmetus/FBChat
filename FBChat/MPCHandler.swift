@@ -49,7 +49,7 @@ class MPCHandler: NSObject, MCSessionDelegate {
     }
     
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
-        let userInfo = ["date": data, "peerID": peerID] as [String: Any]
+        let userInfo = ["data": data, "peerID": peerID] as [String: Any]
         DispatchQueue.main.async(execute: { () -> Void in NotificationCenter.default.post(name: NSNotification.Name(rawValue: "MPC_DidReceiveDataNotification"), object: nil, userInfo: userInfo)
         })
     }

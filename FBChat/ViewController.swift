@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 import MultipeerConnectivity
 
 class FriendsController: UICollectionViewController, UICollectionViewDelegateFlowLayout, MCBrowserViewControllerDelegate {
@@ -29,6 +30,10 @@ class FriendsController: UICollectionViewController, UICollectionViewDelegateFlo
         appDelegate.mpcHandler.setupSession()
         appDelegate.mpcHandler.advertiseSelf(true)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(peerChangedStateWithNotification(with:)), name: NSNotification.Name(rawValue: "MPC_DidChangeStateNotification"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: "handleReceivedDataWithNotification:", name: NSNotification.Name(rawValue: "MPC_DidReceiveDataNotification"), object: nil)
+        
         navigationItem.title = "Recent"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Connect", style: .plain, target: self, action: #selector(connetWithPeer))
         
@@ -42,7 +47,7 @@ class FriendsController: UICollectionViewController, UICollectionViewDelegateFlo
     }
     
     @objc private func connetWithPeer(sender: AnyObject) {
-        
+    
         if appDelegate.mpcHandler.session != nil {
             appDelegate.mpcHandler.setupBrowser()
             appDelegate.mpcHandler.browser.delegate = self
@@ -57,6 +62,41 @@ class FriendsController: UICollectionViewController, UICollectionViewDelegateFlo
     
     func browserViewControllerWasCancelled(_ browserViewController: MCBrowserViewController) {
         appDelegate.mpcHandler.browser.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc private func peerChangedStateWithNotification(with notification: NSNotification) {
+        let userInfo = NSDictionary(dictionary: notification.userInfo!)
+        let state = userInfo.object(forKey: "state") as! Int
+        
+        if state != MCSessionState.connecting.rawValue {
+            
+            let context = appDelegate.persistentContainer.viewContext
+            let soldier76 = NSEntityDescription.insertNewObject(forEntityName: "Friend", into:
+                context) as! Friend
+            soldier76.name = "Soldier76"
+            soldier76.profileImageName = "soldier76"
+            let peerId = userInfo.object(forKey: "peerId")
+            print("PeerID \(peerId)")
+        
+            let message = FriendsController.createMessageWith(text: "Hello!", friend: soldier76, minutesAgo: 0, context: context)
+            
+            messages?.append(message)
+            
+            do {
+                try context.save()
+            } catch let err {
+                print(err)
+            }
+            
+            if let item = messages?.index(of: message) {
+                let receivingIndexPath = IndexPath(item: item, section: 0)
+                collectionView?.insertItems(at: [receivingIndexPath])
+            }
+        }
+    }
+    
+    func handleReceivedDataWithNotification(notification: NSNotification) {
+        
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
